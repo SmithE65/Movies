@@ -1,4 +1,6 @@
 ﻿@page "/"
+@using Movies.Shared.Dtos
+@inject HttpClient Http
 
 <PageTitle>Index</PageTitle>
 
@@ -6,4 +8,38 @@
 
 Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<p>Recently added movies:</p>
+
+@if (movies == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Owned</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in movies)
+            {
+                <tr>
+                    <td>@movie.MovieTitle</td>
+                    <td>@movie.Owned</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private MovieListItem[]? movies;
+
+    protected override async Task OnInitializedAsync()
+    {
+        movies = await Http.GetFromJsonAsync<MovieListItem[]>("api/Movie");
+    }
+}
