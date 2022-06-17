@@ -16,4 +16,11 @@ public class MovieController : ControllerBase
         var recent = await query.ExecuteAsync(new GetRecent<Movie> { Take = 10 });
         return Ok(recent);
     }
+
+    [HttpPost("add")]
+    public async Task<IActionResult> AddNew([FromServices] ICommand<AddMovieDto> addCommand, [FromBody] AddMovieDto dto)
+    {
+        await addCommand.ExecuteAsync(dto);
+        return Ok();
+    }
 }

@@ -11,7 +11,7 @@ using Movies.Server.Data;
 namespace Movies.Server.Data.Migrations
 {
     [DbContext(typeof(MoviesDbContext))]
-    [Migration("20220522211239_UpdateDate")]
+    [Migration("20220617230726_UpdateDate")]
     partial class UpdateDate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,7 +31,7 @@ namespace Movies.Server.Data.Migrations
                     b.Property<int>("MovieId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTimeOffset>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -53,7 +53,7 @@ namespace Movies.Server.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -75,7 +75,7 @@ namespace Movies.Server.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -93,7 +93,7 @@ namespace Movies.Server.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

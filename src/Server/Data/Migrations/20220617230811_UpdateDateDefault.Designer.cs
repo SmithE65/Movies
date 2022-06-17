@@ -11,8 +11,8 @@ using Movies.Server.Data;
 namespace Movies.Server.Data.Migrations
 {
     [DbContext(typeof(MoviesDbContext))]
-    [Migration("20220522215739_UpdateDate2")]
-    partial class UpdateDate2
+    [Migration("20220617230811_UpdateDateDefault")]
+    partial class UpdateDateDefault
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -94,7 +94,9 @@ namespace Movies.Server.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("UpdateDate")
-                        .HasColumnType("TEXT");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.HasKey("Id");
 

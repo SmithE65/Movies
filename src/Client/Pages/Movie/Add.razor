@@ -1,9 +1,42 @@
 ﻿@page "/movies/add"
+@using Movies.Shared.Dtos
+@inject HttpClient Http
 
 <h3>Add</h3>
 
-
+<EditForm Model=@addMovieDto>
+    <p>
+        <label>
+            Title:
+            <InputText @bind-Value=addMovieDto.Title />
+        </label>
+    </p>
+    <p>
+        <label>
+            Owned:
+            <InputCheckbox @bind-Value=addMovieDto.Owned />
+        </label>
+    </p>
+    <p>
+        <label>
+            Format:
+            <InputText @bind-Value=addMovieDto.Format />
+        </label>
+    </p>
+    <button @onclick=SaveMovie>Save</button>
+</EditForm>
 
 @code {
+    private AddMovieDto addMovieDto = new();
 
+    private async Task SaveMovie()
+    {
+        Console.WriteLine("Save clicked!");
+        var result = await Http.PostAsJsonAsync("api/movie/add", addMovieDto);
+
+        if (!result.IsSuccessStatusCode)
+        {
+            Console.WriteLine("Failed to add new movie!");
+        }
+    }
 }

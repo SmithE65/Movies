@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Client", "src\Client
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Shared", "src\Shared\Movies.Shared.csproj", "{9FB14688-0751-434D-9B1B-6350528D57AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Core", "src\Movies.Core\Movies.Core.csproj", "{97BADDA4-7139-4C41-BDB7-4B3D88EE0181}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Core", "src\Movies.Core\Movies.Core.csproj", "{97BADDA4-7139-4C41-BDB7-4B3D88EE0181}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

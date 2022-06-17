@@ -26,6 +26,8 @@ public class GetRecentMoviesQuery : IQuery<MovieListItem[], GetRecent<Movie>>
         }
 
         var result = await queryExpression
+            .Include(x => x.Copies)
+                .ThenInclude(x => x.Format)
             .OrderByDescending(x => x.UpdateDate)
             .Take(query.Take)
             .Select(x => x.ToMovieListItem())

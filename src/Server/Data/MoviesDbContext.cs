@@ -13,4 +13,13 @@ public class MoviesDbContext : DbContext
     public MoviesDbContext() { }
 
     public MoviesDbContext(DbContextOptions<MoviesDbContext> opts) : base(opts) { }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Movie>()
+            .Property(p => p.UpdateDate)
+            .HasDefaultValueSql("CURRENT_TIMESTAMP");
+    }
 }

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Movies.Core.Data;
 using Movies.Core.Data.Options;
 using Movies.Server.Data;
+using Movies.Server.Data.Commands;
 using Movies.Server.Data.Entities;
 using Movies.Server.Data.Queries;
 using Movies.Shared.Dtos;
@@ -18,6 +19,7 @@ builder.Services.AddDbContext<MoviesDbContext>(options =>
         ?? throw new Exception("SQLite connection string missing from appsettings: MoviesContextSQLite")));
 
 builder.Services.AddScoped<IQuery<MovieListItem[], GetRecent<Movie>>, GetRecentMoviesQuery>();
+builder.Services.AddScoped<ICommand<AddMovieDto>, CreateMovieCommand>();
 
 var app = builder.Build();
 
